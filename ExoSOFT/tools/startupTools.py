@@ -1,8 +1,8 @@
 #@Author: Kyle Mede, kylemede@astron.s.u-tokyo.ac.jp  or kylemede@gmail.com
 #import sys
 #from IPython.core.prompts import cwd_filt
-from __future__ import absolute_import
-from __future__ import print_function
+
+
 import shutil
 import os
 import copy
@@ -90,7 +90,7 @@ def startup(settings_in,advanced_settings_in,priors_in,rePlot=False):
             print('*'*35+"\n* 'outDir' parameter was None.")
             cwd = os.getenv('PWD')
             print('* your current working directory is: '+cwd)
-            yn = input("* Do you want to write output files here? (y/n): ")
+            yn = eval(input("* Do you want to write output files here? (y/n): "))
             if (('y' in yn) or ('Y' in yn)):
                 settings['outDir'] = cwd
                 print('*'*35)
@@ -113,7 +113,7 @@ def startup(settings_in,advanced_settings_in,priors_in,rePlot=False):
                     print('$'*50)
                     print('$ WARNING!! the folder:\n$ "'+settings['finalFolder']+'"\n$ ALREADY EXISTS!')
                     print('$ You can overwrite the data in it, or exit this simulation.')
-                    yn = input('$ OVERWRITE current folder (y/n): ')
+                    yn = eval(input('$ OVERWRITE current folder (y/n): '))
                     if settings['logLevel']<50:
                         print('$'*50+'\n')
                 else:
@@ -526,7 +526,7 @@ def startup(settings_in,advanced_settings_in,priors_in,rePlot=False):
                                  'omega_offset_di':360,\
                                  'KMAX':1e7,\
                                  'KMIN':1e7}
-        ks = num_setting_maxs_dict.keys()
+        ks = list(num_setting_maxs_dict.keys())
         for i in range(len(ks)):
             s = "Check if setting '"+ks[i]+"' value was out of range.\n"
             if ks[i] in settings:
@@ -816,7 +816,7 @@ def getSettFilePath(sett_file_path):
             elif os.path.exists('settings.py'):
                 print('*'*35)
                 print('* A settings.py exists in your cwd.')
-                yn = input('* Use it? (y/n): ')
+                yn = eval(input('* Use it? (y/n): '))
                 if (('y' in yn) or ('Y' in yn)):
                     gotIt=True
                     settFilePath='settings.py'
@@ -827,7 +827,7 @@ def getSettFilePath(sett_file_path):
                 # settings file path.
                 print('*'*50)
                 print('* No settings file provided.  ')
-                yn = input('* Use the example one? (y/n): ')
+                yn = eval(input('* Use the example one? (y/n): '))
                 if (('y' in yn) or ('Y' in yn)):
                     #examplesDir = os.path.join(ExoSOFTdir.split('ExoSOFT')[0],'examples/')
                     #settFilePath = os.path.join(examplesDir,"settings.py")
@@ -848,7 +848,7 @@ def getSettFilePath(sett_file_path):
                     #prompt user to provide settings file with path
                     print('* Please provide full path to settings file of your choice.')
                     print('* ex: /path/you/want/settings.py')
-                    settFilePath = input('* : ')
+                    settFilePath = eval(input('* : '))
                     if os.path.exists(settFilePath)==False:
                         log.critical('Critical error occured while trying to load in the settings.  Exiting ExoSOFT!!')
                         s = "\nTHAT SETTINGS FILE DOES NOT EXIST!!"

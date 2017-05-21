@@ -1,5 +1,5 @@
 #@Author: Kyle Mede, kylemede@gmail.com
-from __future__ import absolute_import
+
 #import matplotlib
 # Force matplotlib to not use any Xwindows backend, to further avoid Display issues or when ExoSOFT is ran through ssh without -X.
 #matplotlib.use('Agg')

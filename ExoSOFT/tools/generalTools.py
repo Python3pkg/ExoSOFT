@@ -1,6 +1,6 @@
 #@Author: Kyle Mede, kylemede@astron.s.u-tokyo.ac.jp  or kylemede@gmail.com
-from __future__ import absolute_import
-from __future__ import print_function
+
+
 #import numpy as np
 #import timeit
 import copy

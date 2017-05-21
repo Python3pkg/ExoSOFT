@@ -69,29 +69,29 @@ def calcOrbit():
 
     # print input orbital elements
     if quiet==False:
-        print "\n\nOrbital Elements Used:\ne = "+str(e)
-        print "period = "+str(period)+" Years"
-        print "LongAN = "+str(Omega*180.0/np.pi)+" deg"
-        print "ArgPeri = "+str(omega*180.0/np.pi)+" deg"
-        print "a_total = "+str(a_AU)+" AU"
-        print "inclination = "+str(i*180.0/np.pi)+" deg"
-        print "Time of Last Periapsis = "+str(TimeLastPeri)+" JD"
-        print "Mass 1 = "+str(M_primary)+" Msun"
-        print "Mass 2 = "+str(M_secondary)+" Msun"
-        print "Mass 2 = "+str(M_secondary*(const.M_sun.value/const.M_jup.value))+" Mjupiter"
-        print "System distance = "+str(distance)+" PC, or "+str(1.0/(distance/1000.0))+' [mas]'
+        print("\n\nOrbital Elements Used:\ne = "+str(e))
+        print("period = "+str(period)+" Years")
+        print("LongAN = "+str(Omega*180.0/np.pi)+" deg")
+        print("ArgPeri = "+str(omega*180.0/np.pi)+" deg")
+        print("a_total = "+str(a_AU)+" AU")
+        print("inclination = "+str(i*180.0/np.pi)+" deg")
+        print("Time of Last Periapsis = "+str(TimeLastPeri)+" JD")
+        print("Mass 1 = "+str(M_primary)+" Msun")
+        print("Mass 2 = "+str(M_secondary)+" Msun")
+        print("Mass 2 = "+str(M_secondary*(const.M_sun.value/const.M_jup.value))+" Mjupiter")
+        print("System distance = "+str(distance)+" PC, or "+str(1.0/(distance/1000.0))+' [mas]')
         #settings prints
         if storePrimaryRVs:
-            print "Saving RVs of primary star relative to Center of Mass\n"
+            print("Saving RVs of primary star relative to Center of Mass\n")
         else:
-            print "Saving RVs of companion relative to Center of Mass\n"
-        print 'Errors were calculated as '+str(percentError)+"% of the median value in the observables"
+            print("Saving RVs of companion relative to Center of Mass\n")
+        print('Errors were calculated as '+str(percentError)+"% of the median value in the observables")
         if realizeErrors:
-            print 'Data values were realized from the errors'
+            print('Data values were realized from the errors')
         else:
-            print 'Data values are perfect with NO realization of the errors'
-        print str(NumDataPointsOutRV)+" RV, and "+str(NumDataPointsOutDI)+" DI epochs will be calculated and stored"
-        print 'The data will cover '+str(percentCoverage)+'% of the total orbit.\n'
+            print('Data values are perfect with NO realization of the errors')
+        print(str(NumDataPointsOutRV)+" RV, and "+str(NumDataPointsOutDI)+" DI epochs will be calculated and stored")
+        print('The data will cover '+str(percentCoverage)+'% of the total orbit.\n')
 
     # Positions of both components in km relative to center of mass
     ke = pyasl.KeplerEllipse(a1, period, e=e, Omega=0.)
@@ -255,7 +255,7 @@ def calcOrbit():
         np.savetxt(os.path.join(outDir,outBaseName+'RVdata.dat'), dataRV, fmt="%.10g")
         np.savetxt(os.path.join(outDir,outBaseName+'DIdata.dat'), dataDI3, fmt="%.10g")
     if quiet==False:
-        print '\nOutput data files written to:\n'+outDir
+        print('\nOutput data files written to:\n'+outDir)
 
 if __name__ == "__main__":
     calcOrbit()

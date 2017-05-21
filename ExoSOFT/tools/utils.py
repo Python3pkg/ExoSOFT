@@ -1,5 +1,5 @@
 #@Author: Kyle Mede, kylemede@astron.s.u-tokyo.ac.jp or kylemede@gmail.com
-from __future__ import absolute_import
+
 import numpy as np
 import os
 import shutil
